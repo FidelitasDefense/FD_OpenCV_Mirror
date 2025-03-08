@@ -222,20 +222,24 @@ if(WITH_LAPACK)
         ocv_lapack_check(IMPL "LAPACK/MKL"
           CBLAS_H "mkl_cblas.h"
           LAPACKE_H "mkl_lapack.h"
-          INCLUDE_DIR "${LAPACKE_INCLUDE_DIR}" "${MKL_LAPACKE_INCLUDE_DIR}"
+          INCLUDE_DIR "${MKL_LAPACKE_INCLUDE_DIR}"
           LIBRARIES "${LAPACK_LIBRARIES}")
       endif()
       if(NOT HAVE_LAPACK)
-        if(LAPACKE_INCLUDE_DIR)
+        if(NOT DEFINED CBLAS_INCLUDE_DIR)
+          find_path(CBLAS_INCLUDE_DIR "cblas.h")
+        endif()
+        if(CBLAS_INCLUDE_DIR AND LAPACKE_INCLUDE_DIR)
           ocv_lapack_check(IMPL "LAPACK/Generic"
             CBLAS_H "cblas.h"
             LAPACKE_H "lapacke.h"
-            INCLUDE_DIR "${LAPACKE_INCLUDE_DIR}")
+            INCLUDE_DIR "${CBLAS_INCLUDE_DIR}" "${LAPACKE_INCLUDE_DIR}"
+            LIBRARIES "${LAPACK_LIBRARIES}")
         elseif(APPLE)
           ocv_lapack_check(IMPL "LAPACK/Apple"
             CBLAS_H "Accelerate/Accelerate.h"
             LAPACKE_H "Accelerate/Accelerate.h")
-          endif()
+        endif()
       endif()
     endif()
     if(NOT HAVE_LAPACK)
