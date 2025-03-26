@@ -636,6 +636,33 @@ TEST(Imgcodecs_APNG, imencode_animation)
     }
 }
 
+TEST(Imgcodecs_APNG, animation_has_hidden_frame)
+{
+    // Set the path to the test image directory and filename for loading.
+    const string root = cvtest::TS::ptr()->get_data_path();
+    const string filename = root + "readwrite/033.png";
+    Animation animation1, animation2, animation3;
+
+    imreadanimation(filename, animation1);
+
+    EXPECT_FALSE(animation1.still_image.empty());
+    EXPECT_EQ((size_t)2, animation1.frames.size());
+
+    std::vector<unsigned char> buf;
+    EXPECT_TRUE(imencodeanimation(".png", animation1, buf));
+    EXPECT_TRUE(imdecodeanimation(buf, animation2));
+
+    EXPECT_FALSE(animation2.still_image.empty());
+    EXPECT_EQ(animation1.frames.size(), animation2.frames.size());
+
+    animation1.still_image.release();
+    EXPECT_TRUE(imencodeanimation(".png", animation1, buf));
+    EXPECT_TRUE(imdecodeanimation(buf, animation3));
+
+    EXPECT_TRUE(animation1.still_image.empty());
+    EXPECT_EQ(animation1.frames.size(), animation3.frames.size());
+}
+
 #endif // HAVE_PNG
 
 #if defined(HAVE_PNG) || defined(HAVE_SPNG)
