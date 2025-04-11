@@ -82,7 +82,7 @@ jobs:
         #build-mode: ${{ matrix.build-mode }}
 
     #Jonas:  Suggest fix for low memory 04/20/2025
-    - name: Cleanup disk space
+    - name: Cleanup disk space Jonas
       run: |
         sudo rm -rf /usr/share/dotnet
         sudo rm -rf /usr/local/lib/android
