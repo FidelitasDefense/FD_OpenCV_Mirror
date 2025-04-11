@@ -43,11 +43,11 @@ jobs:
     
     steps:
 
-    - name: Checkout repository Jonas
+    - name: Checkout repository Jonas 2
       uses: actions/checkout@v4
 
     #Jonas:  Suggest fix for low memory 04/20/2025 / Prior to Build 
-    - name: Cleanup disk space Jonas
+    - name: Cleanup disk space Jonas 2
       run: |
         sudo rm -rf /usr/share/dotnet
         sudo rm -rf /usr/local/lib/android
@@ -56,7 +56,7 @@ jobs:
 
 
     # Initializes the CodeQL tools for scanning.
-    #- name: Initialize CodeQL Jonas
+    #- name: Initialize CodeQL Jonas 
     -uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
@@ -67,7 +67,7 @@ jobs:
       #uses: github/codeql-action/autobuild@v3
          
 
-    - name: Perform CodeQL Analysis Jonas
+    - name: Perform CodeQL Analysis Jonas 2
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
