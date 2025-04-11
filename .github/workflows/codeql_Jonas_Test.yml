@@ -44,7 +44,7 @@ jobs:
       matrix:
         include:
         - language: c-cpp
-          build-mode: autobuild
+          #build-mode: autobuild
         #- language: python
           #build-mode: none
         
@@ -68,11 +68,11 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        build-mode: ${{ matrix.build-mode }}
+        #build-mode: ${{ matrix.build-mode }}
 
 
-    #- name: Autobuild Jonas
-      #uses: github/codeql-action/autobuild@v3
+    - name: Autobuild Jonas
+      uses: github/codeql-action/autobuild@v3
          
 
     - name: Perform CodeQL Analysis Jonas 2
