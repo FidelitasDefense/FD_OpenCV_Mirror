@@ -9,7 +9,6 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 #
-# Source:  https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages#example-using-the-autobuild-step
 
 name: "codeql_Jonas_Test"
 
