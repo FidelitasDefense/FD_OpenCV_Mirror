@@ -20,8 +20,8 @@ on:
     - cron: '40 3 * * 4'
     
 #CodeQLSuggest TO Fix Error
-env:
-  CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
+#env:
+  #CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
   
 jobs:
   analyze:
