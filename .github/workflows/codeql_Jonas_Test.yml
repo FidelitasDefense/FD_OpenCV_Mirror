@@ -54,18 +54,18 @@ jobs:
         
     steps:
 
-    - name: Checkout repository Jonas 7 C-CPP
+    - name: Checkout repository Jonas 8 C-CPP
       uses: actions/checkout@v4
 
     # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL Jonas 7 C-CPP
+    - name: Initialize CodeQL Jonas 8 C-CPP
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
         #build-mode: ${{ matrix.build-mode }}
 
     #Jonas:  Suggest fix for low memory 04/20/2025 / Prior to Build 
-    - name: Cleanup disk space Jonas 7 C-CPP
+    - name: Cleanup disk space Jonas 8 C-CPP
       run: |
         sudo rm -rf /usr/share/dotnet
         sudo rm -rf /usr/local/lib/android
@@ -75,7 +75,7 @@ jobs:
     - name: Autobuild Jonas
       uses: github/codeql-action/autobuild@v3
         
-    - name: Perform CodeQL Analysis Jonas 7 C-CPP
+    - name: Perform CodeQL Analysis Jonas 8 C-CPP
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
