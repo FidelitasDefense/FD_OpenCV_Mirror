@@ -9,7 +9,7 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 #
-name: "codeql_Jonas_C_CPP"
+name: "codeql_jonas_c_cpp"
 
 on:
   push:
