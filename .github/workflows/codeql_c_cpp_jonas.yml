@@ -54,7 +54,7 @@ jobs:
         
     steps:
 
-    - name: Checkout repository Jonas 10 C-CPP
+    - name: Checkout repository Jonas 15 C-CPP
       uses: actions/checkout@v4
 
     # Initializes the CodeQL tools for scanning.
